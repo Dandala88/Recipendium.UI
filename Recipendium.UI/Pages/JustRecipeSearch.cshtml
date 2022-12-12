@@ -9,4 +9,27 @@
     <p>Search for recipes and ignore all of the blog posts and stories. Get just the recipes!</p>
 </div>
 
-<input type="search" />
+<form method="post">
+    <input type="search" name="query" />
+    <button class="btn btn-default">Search</button>
+    <br />
+    <sub><i>@Model.Message</i></sub>
+</form>
+
+<div>
+    @if (Model.ResultPages != null)
+    {
+        @for (int i = 0; i < Model.ResultPages.Count; i++)
+        {
+            <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#result_@i" aria-expanded="false" aria-controls="result_@i">
+                ⌄
+          </button>
+          <span class="collapse" id="result_@i">
+                <p>
+                    @Html.Raw(@Model.ResultPages[i]);
+                </p>
+            </span>
+            <br />
+        }
+    }
+</div>
