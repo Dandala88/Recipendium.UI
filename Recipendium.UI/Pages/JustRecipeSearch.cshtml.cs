@@ -1,6 +1,7 @@
 using Core.HttpDynamo;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Recipendium.UI.Models;
 
 namespace Recipendium.UI.Pages
 {
@@ -9,7 +10,7 @@ namespace Recipendium.UI.Pages
         private readonly IHttpClientFactory _httpClientFactory;
 
         public string Message { get; set; }
-        public List<string> ResultPages { get; set; }
+        public List<WPRMResult> ResultPages { get; set; }
 
         public JustRecipeSearchModel(IHttpClientFactory httpClientFactory)
         {
@@ -32,7 +33,7 @@ namespace Recipendium.UI.Pages
                     }
                 }
 
-                var results = await HttpDynamo.GetRequestAsync<List<string>>(_httpClientFactory, "https://recipendiumapi20221210174136.azurewebsites.net/Recipe?q=" + query);
+                var results = await HttpDynamo.GetRequestAsync<List<WPRMResult>>(_httpClientFactory, "https://recipendiumapi20221210174136.azurewebsites.net/Recipe?q=" + query);
 
                 ResultPages = results;
             }

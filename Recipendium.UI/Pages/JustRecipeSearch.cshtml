@@ -22,10 +22,10 @@
         @for (int i = 0; i < Model.ResultPages.Count; i++)
         {
           <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#result_@i" aria-expanded="false" aria-controls="result_@i">
-            >
+            @Model.ResultPages[i].Title
           </button>
           <span class="collapse" id="result_@i">
-                    @Html.Raw(@Model.ResultPages[i]);
+                    @Html.Raw(@Model.ResultPages[i].Html);
             </span>
             <br />
         }
