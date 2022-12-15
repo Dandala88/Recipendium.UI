@@ -1,7 +1,7 @@
 ﻿@page
 @model Recipendium.UI.Pages.JustRecipeSearchModel
 @{
-        ViewData["Title"] = "JustRecipeSearch";
+    ViewData["Title"] = "JustRecipeSearch";
 }
 
 <div class="text-center">
@@ -11,6 +11,7 @@
 
 <form method="post">
     <input type="search" name="query" />
+    <input type="number" min="10" max="100" step="10" name="limit" value="10"/>
     <button class="btn btn-default">Search</button>
     <br />
     <sub><i>@Model.Message</i></sub>

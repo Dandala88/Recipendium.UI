@@ -17,7 +17,7 @@ namespace Recipendium.UI.Pages
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task OnPost(string query)
+        public async Task OnPost(string query, int limit)
         {
             Message = string.Empty;
             if (!string.IsNullOrEmpty(query))
@@ -33,7 +33,7 @@ namespace Recipendium.UI.Pages
                     }
                 }
 
-                var results = await HttpDynamo.GetRequestAsync<List<WPRMResult>>(_httpClientFactory, "https://recipendiumapi20221210174136.azurewebsites.net/Recipe?q=" + query);
+                var results = await HttpDynamo.GetRequestAsync<List<WPRMResult>>(_httpClientFactory, "https://recipendiumapi20221210174136.azurewebsites.net/Recipe?q=" + query + "&limit=" + limit);
 
                 ResultPages = results;
             }
